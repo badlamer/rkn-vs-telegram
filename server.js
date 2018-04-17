@@ -17,7 +17,7 @@ app.use(express.static('dist'));
 //   res.sendFile('index.html');
 // });
 
-app.listen(80);
+app.listen( process.env.PORT || 8080);
 
 const wss = new WebSocket.Server({ port: 8080 });
 
