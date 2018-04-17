@@ -1,11 +1,29 @@
 #!/usr/bin/env node
+
+
+
 const WebSocket = require('ws');
+
+var express = require('express');
+
+// создаём Express-приложение
+var app = express();
+
+app.use(express.static('dist'));
+
+// создаём маршрут для главной страницы
+// http://localhost:8080/
+// app.get('/', function(req, res) {
+//   res.sendFile('index.html');
+// });
+
+app.listen(80);
 
 const wss = new WebSocket.Server({ port: 8080 });
 
 const https = require('https');
 
-let couter = 0;
+let couter = '-';
 
 // Broadcast to all.
 wss.broadcast = function broadcast(data) {
