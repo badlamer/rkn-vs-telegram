@@ -1,0 +1,15 @@
+{
+  "name": "rknzen",
+  "version": "1.0.0",
+  "main": "server.js",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^4.1.0",
+    "tabler-ui": "0.0.32",
+    "ws": "^5.1.1"
+  },
+  "devDependencies": {
+    "webpack": "^4.5.0",
+    "webpack-cli": "^2.0.14"
+  }
+}
