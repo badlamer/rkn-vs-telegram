@@ -12,7 +12,7 @@ app.use(express.static('dist'));
 const server = http.createServer(app);
 
 
-const wss = new WebSocket.Server({ server });
+const wss = new WebSocket.Server({ server: server });
 
 const https = require('https');
 
