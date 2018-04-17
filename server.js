@@ -1,19 +1,18 @@
 #!/usr/bin/env node
-
-
-
 const WebSocket = require('ws');
 
-var express = require('express');
+const express = require('express');
+const http = require('http');
 
 // создаём Express-приложение
-var app = express();
+const app = express();
 
 app.use(express.static('dist'));
 
-app.listen( process.env.PORT || 8080);
+const server = http.createServer(app);
 
-const wss = new WebSocket.Server({ port: 8081 });
+
+const wss = new WebSocket.Server({ server });
 
 const https = require('https');
 
@@ -52,4 +51,6 @@ setInterval(function() {
     });
   } catch (e) {
   }
-}, 10000);
+}, 15000);
+
+server.listen( process.env.PORT || 8080);
