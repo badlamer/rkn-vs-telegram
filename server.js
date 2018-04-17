@@ -11,15 +11,9 @@ var app = express();
 
 app.use(express.static('dist'));
 
-// создаём маршрут для главной страницы
-// http://localhost:8080/
-// app.get('/', function(req, res) {
-//   res.sendFile('index.html');
-// });
-
 app.listen( process.env.PORT || 8080);
 
-const wss = new WebSocket.Server({ port: 8080 });
+const wss = new WebSocket.Server({ port: 8081 });
 
 const https = require('https');
 
