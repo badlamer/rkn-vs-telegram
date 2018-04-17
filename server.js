@@ -32,25 +32,24 @@ wss.on('connection', function connection(ws) {
 });
 
 setInterval(function() {
-  try {
-    https.get('https://2018.schors.spb.ru/d1_ipblock.json', resp => {
-      let data = '';
+  https.get('https://2018.schors.spb.ru/d1_ipblock.json', resp => {
+    let data = '';
 
-      // A chunk of data has been recieved.
-      resp.on('data', (chunk) => {
-        data += chunk;
-      });
-
-      // The whole response has been received. Print out the result.
-      resp.on('end', () => {
-        const arr = JSON.parse(data);
-        couter = arr[arr.length - 1].y;
-        wss.broadcast(couter);
-      });
-
+    // A chunk of data has been recieved.
+    resp.on('data', (chunk) => {
+      data += chunk;
     });
-  } catch (e) {
-  }
+
+    // The whole response has been received. Print out the result.
+    resp.on('end', () => {
+      const arr = JSON.parse(data);
+      couter = arr[arr.length - 1].y;
+      wss.broadcast(couter);
+    });
+
+  }).on('error', (e) => {
+    console.error(e);
+  });
 }, 15000);
 
 server.listen( process.env.PORT || 8080);
