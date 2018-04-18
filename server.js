@@ -32,7 +32,7 @@ wss.on('connection', function connection(ws) {
 });
 
 setInterval(function() {
-  https.get('https://2018.schors.spb.ru/d1_ipblock.json', resp => {
+  const req = https.get('https://usher2.club/d1_ipblock.json', resp => {
     let data = '';
 
     // A chunk of data has been recieved.
@@ -47,9 +47,12 @@ setInterval(function() {
       wss.broadcast(couter);
     });
 
-  }).on('error', (e) => {
+  });
+  req.on('error', (e) => {
     console.error(e);
   });
+
+  req.end();
 }, 15000);
 
 server.listen( process.env.PORT || 8080);
